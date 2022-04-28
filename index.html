@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>История в анекдотах</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            transition-timing-function: linear
+        }
+        #container {
+            width: 100%;
+            height: calc(3000px + 100vh);
+            position: relative;
+        }
+        .epoha {
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            opacity: 0;
+            transition-duration: 1s;
+        }
+        #i1 {
+            background: red;
+            z-index: 50;
+        }
+        #i2 {
+            background: yellow;
+            z-index: 40;
+        }
+        #i3 {
+            background: green;
+            z-index: 30;
+        }
+        #i4 {
+            background: blue;
+            z-index: 20;
+        }
+        #menu {
+            z-index: 100;
+            width: 40vw;
+            position: fixed;
+            margin: 20px 30vw;
+            overflow: auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-column-gap: 20px;
+        }
+        .mb {
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50px;
+            background: #8A3A33;
+            cursor: pointer;
+            transition-duration: 1s;
+        }
+        .mb img {
+            width: 80%;
+            margin: 10%
+        }
+        #end {
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background: #CCDFEB;
+            padding: 100px;
+        }
+        #start {
+            z-index: 60;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background: #D48383;
+            padding: 100px;
+            transition-duration: 1s;
+        }
+
+    </style>
+</head>
+<body>
+
+<script>
+window.onload = function(){
+    console.log(1);
+    window.scrollTo(0, 0);
+}
+    function goTo(e) {
+        var t = window.scrollY;
+        window.scrollBy(0, -t);
+        window.scrollBy(0, e);
+    }
+
+</script>
+<div id="container">
+    <div id="menu">
+        <button id="bs" class="mb" onclick="goTo(300)" style="background: #658BAC">
+            <img src="https://cdn-icons-png.flaticon.com/512/1168/1168316.png?w=740">
+        </button>
+        <button id="b1" class="mb" onclick="goTo(900)">
+            <img src="https://cdn-icons-png.flaticon.com/512/749/749487.png?w=740">
+        </button>
+        <button id="b2" class="mb" onclick="goTo(1500)">
+            <img src="https://cdn-icons-png.flaticon.com/512/623/623133.png?w=740">
+        </button>
+        <button id="b3" class="mb" onclick="goTo(2100)">
+            <img src="https://cdn-icons-png.flaticon.com/512/1247/1247058.png?w=740">
+        </button>
+        <button id="b4" class="mb" onclick="goTo(2700)">
+            <img src="https://cdn-icons-png.flaticon.com/512/1015/1015609.png?w=740">
+        </button>
+    </div>
+    <div id="start">
+        <h1>Начальный экран</h1>
+    </div>
+    <div id="i1" class="epoha"></div>
+    <div id="i2" class="epoha"></div>
+    <div id="i3" class="epoha"></div>
+    <div id="i4" class="epoha"></div>
+    <div id="end">
+        <h1>Финальный экран</h1>
+    </div>
+</div>
+
+<script>
+
+function myMove(t) {
+    var start =  document.getElementById("start");
+    var elem1 =  document.getElementById("i1");
+    var elem2 =  document.getElementById("i2");
+    var elem3 =  document.getElementById("i3");
+    var elem4 =  document.getElementById("i4");
+    var pos = t;
+    var z = Math.pow(1.005, t);
+    if (t < 600) {
+        document.getElementById("bs").style.background = '#658BAC';
+        document.getElementById("b1").style.background = '#8A3A33';
+        document.getElementById("b2").style.background = '#8A3A33';
+        document.getElementById("b3").style.background = '#8A3A33';
+        document.getElementById("b4").style.background = '#8A3A33';
+        elem2.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem1.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem4.style.opacity = 0;
+        elem2.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem1.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        start.style.opacity = 1;
+    }
+    else if (t < 1200) {
+        document.getElementById("b1").style.background = '#658BAC';
+        document.getElementById("bs").style.background = '#8A3A33';
+        document.getElementById("b2").style.background = '#8A3A33';
+        document.getElementById("b3").style.background = '#8A3A33';
+        document.getElementById("b4").style.background = '#8A3A33';
+        elem1.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
+        elem2.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        document.getElementById('i1').innerHTML = t + 'px';
+        elem1.style.opacity = 1;
+        elem2.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem4.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
+        start.style.opacity = 0;
+    }
+    else if (t < 1800) {
+        document.getElementById("b2").style.background = '#658BAC';
+        document.getElementById("b1").style.background = '#8A3A33';
+        document.getElementById("bs").style.background = '#8A3A33';
+        document.getElementById("b3").style.background = '#8A3A33';
+        document.getElementById("b4").style.background = '#8A3A33';
+        elem2.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
+        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        document.getElementById('i2').innerHTML = t + 'px';
+        elem2.style.opacity = 1;
+        elem1.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem4.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
+        start.style.opacity = 0;
+    }
+    else if (t < 2400) {
+        document.getElementById("b3").style.background = '#658BAC';
+        document.getElementById("b1").style.background = '#8A3A33';
+        document.getElementById("b2").style.background = '#8A3A33';
+        document.getElementById("bs").style.background = '#8A3A33';
+        document.getElementById("b4").style.background = '#8A3A33';
+        elem3.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
+        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
+        document.getElementById('i3').innerHTML = t + 'px';
+        elem3.style.opacity = 1;
+        elem2.style.opacity = 0;
+        elem1.style.opacity = 0;
+        elem4.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
+        start.style.opacity = 0;
+    }
+    else if (t < 3000) {
+        document.getElementById("b4").style.background = '#658BAC';
+        document.getElementById("b1").style.background = '#8A3A33';
+        document.getElementById("b2").style.background = '#8A3A33';
+        document.getElementById("b3").style.background = '#8A3A33';
+        document.getElementById("bs").style.background = '#8A3A33';
+        elem4.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
+        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem3.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        document.getElementById('i4').innerHTML = t + 'px';
+        elem4.style.opacity = 1;
+        elem2.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem1.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
+        start.style.opacity = 0;
+    }
+    else {
+        document.getElementById("bs").style.background = '#8A3A33';
+        document.getElementById("b1").style.background = '#8A3A33';
+        document.getElementById("b2").style.background = '#8A3A33';
+        document.getElementById("b3").style.background = '#8A3A33';
+        document.getElementById("b4").style.background = '#8A3A33';
+        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem3.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem4.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
+        elem4.style.opacity = 0;
+        elem2.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem1.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
+        start.style.opacity = 0;
+    }
+
+}
+window.addEventListener('scroll', function() {
+    myMove(pageYOffset);
+});
+
+
+</script>
+</body>
+</html>
