@@ -15,27 +15,30 @@
             position: relative;
         }
         .epoha {
-            width: 50px;
-            height: 50px;
+            width: 500%;
+            height: 100%;
             position: fixed;
-            opacity: 0;
-            transition-duration: 1s;
+            opacity: 1;
+            transition-duration: 1.5s;
+            transition-timing-function: ease-in-out;
+            background: url('pngegg.png') repeat-x;
+            background-size: auto 100%;
         }
         #i1 {
-            background: red;
             z-index: 50;
+            transform: matrix(1, 0, 0, 1, -200%, -100);
         }
         #i2 {
-            background: yellow;
             z-index: 40;
+            transform: matrix(0.8, 0, 0, 0.8, -1000, -150);
         }
         #i3 {
-            background: green;
             z-index: 30;
+            transform: matrix(0.6, 0, 0, 0.6, -2000, -200);
         }
         #i4 {
-            background: blue;
             z-index: 20;
+            transform: matrix(0.4, 0, 0, 0.4, -3000, -250)
         }
         #menu {
             z-index: 100;
@@ -75,7 +78,23 @@
             position: fixed;
             background: #D48383;
             padding: 100px;
-            transition-duration: 1s;
+            transition-duration: 1.5s;
+        }
+        .space {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #CCDFEB;
+            transition-duration: 2s;
+        }
+        #s1 {
+            z-index: 45;
+        }
+        #s2 {
+            z-index: 35;
+        }
+        #s3 {
+            z-index: 25;
         }
 
     </style>
@@ -116,8 +135,11 @@ window.onload = function(){
         <h1>Начальный экран</h1>
     </div>
     <div id="i1" class="epoha"></div>
+    <div id="s1" class="space"></div>
     <div id="i2" class="epoha"></div>
+    <div id="s2" class="space"></div>
     <div id="i3" class="epoha"></div>
+    <div id="s3" class="space"></div>
     <div id="i4" class="epoha"></div>
     <div id="end">
         <h1>Финальный экран</h1>
@@ -132,6 +154,9 @@ function myMove(t) {
     var elem2 =  document.getElementById("i2");
     var elem3 =  document.getElementById("i3");
     var elem4 =  document.getElementById("i4");
+    var s1 = document.getElementById("s1");
+    var s2 = document.getElementById("s2");
+    var s3 = document.getElementById("s3");
     var pos = t;
     var z = Math.pow(1.005, t);
     if (t < 600) {
@@ -140,16 +165,15 @@ function myMove(t) {
         document.getElementById("b2").style.background = '#8A3A33';
         document.getElementById("b3").style.background = '#8A3A33';
         document.getElementById("b4").style.background = '#8A3A33';
-        elem2.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem1.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem4.style.opacity = 0;
-        elem2.style.opacity = 0;
-        elem3.style.opacity = 0;
-        elem1.style.opacity = 0;
+        elem1.style.transform = 'matrix(1, 0, 0, 1, 0, -100)';
+        elem2.style.transform = 'matrix(0.8, 0, 0, 0.8, -1000, -150)';
+        elem3.style.transform = 'matrix(0.6, 0, 0, 0.6, -2000, -200)';
+        elem4.style.transform = 'matrix(0.4, 0, 0, 0.4, -3000, -250)';
+        elem4.style.opacity = 1;
+        elem2.style.opacity = 1;
+        elem3.style.opacity = 1;
+        elem1.style.opacity = 1;
         start.style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
-        start.style.opacity = 1;
     }
     else if (t < 1200) {
         document.getElementById("b1").style.background = '#658BAC';
@@ -157,17 +181,18 @@ function myMove(t) {
         document.getElementById("b2").style.background = '#8A3A33';
         document.getElementById("b3").style.background = '#8A3A33';
         document.getElementById("b4").style.background = '#8A3A33';
-        elem1.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
-        elem2.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        document.getElementById('i1').innerHTML = t + 'px';
+        elem1.style.transform = 'matrix(1, 0, 0, 1, 0, -100)';
+        elem2.style.transform = 'matrix(0.8, 0, 0, 0.8, -1000, -150)';
+        elem3.style.transform = 'matrix(0.6, 0, 0, 0.6, -2000, -200)';
+        elem4.style.transform = 'matrix(0.4, 0, 0, 0.4, -3000, -250)';
         elem1.style.opacity = 1;
-        elem2.style.opacity = 0;
-        elem3.style.opacity = 0;
-        elem4.style.opacity = 0;
-        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
-        start.style.opacity = 0;
+        elem2.style.opacity = 1;
+        elem3.style.opacity = 1;
+        elem4.style.opacity = 1;
+        s1.style.opacity = 0.3;
+        s2.style.opacity = 0.3;
+        s3.style.opacity = 0.3;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, -1000)';
     }
     else if (t < 1800) {
         document.getElementById("b2").style.background = '#658BAC';
@@ -175,17 +200,18 @@ function myMove(t) {
         document.getElementById("bs").style.background = '#8A3A33';
         document.getElementById("b3").style.background = '#8A3A33';
         document.getElementById("b4").style.background = '#8A3A33';
-        elem2.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
-        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem3.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        document.getElementById('i2').innerHTML = t + 'px';
+        elem1.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem2.style.transform = 'matrix(1, 0, 0, 1, 0, -100)';
+        elem3.style.transform = 'matrix(0.8, 0, 0, 0.8, -1000, -150)';
+        elem4.style.transform = 'matrix(0.6, 0, 0, 0.6, -2000, -200)';
         elem2.style.opacity = 1;
         elem1.style.opacity = 0;
-        elem3.style.opacity = 0;
-        elem4.style.opacity = 0;
-        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
-        start.style.opacity = 0;
+        elem3.style.opacity = 1;
+        elem4.style.opacity = 1;
+        s1.style.opacity = 0;
+        s2.style.opacity = 0.3;
+        s3.style.opacity = 0.3;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, -1000)';
     }
     else if (t < 2400) {
         document.getElementById("b3").style.background = '#658BAC';
@@ -193,17 +219,18 @@ function myMove(t) {
         document.getElementById("b2").style.background = '#8A3A33';
         document.getElementById("bs").style.background = '#8A3A33';
         document.getElementById("b4").style.background = '#8A3A33';
-        elem3.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
-        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem4.style.transform = 'matrix(1, 0, 0, 1, 100, 100)';
-        document.getElementById('i3').innerHTML = t + 'px';
-        elem3.style.opacity = 1;
+        elem1.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem2.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem3.style.transform = 'matrix(1, 0, 0, 1, 0, -100)';
+        elem4.style.transform = 'matrix(0.8, 0, 0, 0.8, -1000, -150)';
         elem2.style.opacity = 0;
         elem1.style.opacity = 0;
-        elem4.style.opacity = 0;
-        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
-        start.style.opacity = 0;
+        elem3.style.opacity = 1;
+        elem4.style.opacity = 1;
+        s1.style.opacity = 0;
+        s2.style.opacity = 0;
+        s3.style.opacity = 0.3;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, -1000)';
     }
     else if (t < 3000) {
         document.getElementById("b4").style.background = '#658BAC';
@@ -211,17 +238,18 @@ function myMove(t) {
         document.getElementById("b2").style.background = '#8A3A33';
         document.getElementById("b3").style.background = '#8A3A33';
         document.getElementById("bs").style.background = '#8A3A33';
-        elem4.style.transform = 'matrix(10, 0, 0, 10, 400, 400)';
-        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem3.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        document.getElementById('i4').innerHTML = t + 'px';
-        elem4.style.opacity = 1;
+        elem1.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem2.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem3.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem4.style.transform = 'matrix(1, 0, 0, 1, 0, -100)';
         elem2.style.opacity = 0;
-        elem3.style.opacity = 0;
         elem1.style.opacity = 0;
-        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
-        start.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem4.style.opacity = 1;
+        s1.style.opacity = 0;
+        s2.style.opacity = 0;
+        s3.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, -1000)';
     }
     else {
         document.getElementById("bs").style.background = '#8A3A33';
@@ -229,16 +257,18 @@ function myMove(t) {
         document.getElementById("b2").style.background = '#8A3A33';
         document.getElementById("b3").style.background = '#8A3A33';
         document.getElementById("b4").style.background = '#8A3A33';
-        elem2.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem1.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem3.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem4.style.transform = 'matrix(20, 0, 0, 20, 800, 800)';
-        elem4.style.opacity = 0;
+        elem1.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem2.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem3.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
+        elem4.style.transform = 'matrix(2, 0, 0, 2, 3500, 1500)';
         elem2.style.opacity = 0;
-        elem3.style.opacity = 0;
         elem1.style.opacity = 0;
-        start.style.transform = 'matrix(1, 0, 0, 1, 0, 1000)';
-        start.style.opacity = 0;
+        elem3.style.opacity = 0;
+        elem4.style.opacity = 0;
+        s1.style.opacity = 0;
+        s2.style.opacity = 0;
+        s3.style.opacity = 0;
+        start.style.transform = 'matrix(1, 0, 0, 1, 0, -1000)';
     }
 
 }
