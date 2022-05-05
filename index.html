@@ -9,6 +9,9 @@
             margin: 0;
             transition-timing-function: linear
         }
+        #altern {
+            display: none;
+        }
         #container {
             width: 100%;
             height: calc(3000px + 100vh);
@@ -108,7 +111,16 @@
             bottom: 250px;
             width: 200px; height: 200px;
         }
-
+        @media (max-width: 1200px) {
+            #container {
+                display: none;
+            }
+            #altern {
+                display: block;
+                position: fixed;
+                padding: 20px;
+            }
+        }
 
 
     </style>
@@ -129,6 +141,9 @@ window.onload = function(){
 
 
 </script>
+<div id="altern">
+    <h2>На вашем устройстве не поддерживается, прощайте...</h2>
+</div>
 <div id="container">
     <div id="menu">
         <button id="bs" class="mb" onclick="goTo(300)" style="background: #D48383">
