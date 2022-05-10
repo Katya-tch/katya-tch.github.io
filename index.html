@@ -111,6 +111,60 @@
             bottom: 250px;
             width: 200px; height: 200px;
         }
+        .elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            transition-duration: 1s;
+            left: -100%;
+            z-index: 59;
+        }
+        .elements img {
+            position: absolute;
+            cursor: pointer;
+        }
+        .pol {
+            width: 100%;
+            height: 25%;
+            bottom: 0;
+            position: absolute;
+            background: #5f5a54;
+        }
+        .aneki {
+            color: #5f5a54;
+            font-family: "Times New Roman";
+            font-size: 17pt;
+            background: white;
+            position: absolute;
+            width: 19%;
+            bottom: 6%;
+            right: 1%;
+            height: 56%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: left;
+            border-radius: 20px;
+        }
+        .aneki span {
+            display: block;
+            text-align: center;
+            font-size: 22pt;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .aneki p {
+            padding: 5px;
+        }
+        .aneki:before {
+            content: ' ';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: -55px;
+            bottom: 75px;
+            border: 30px solid;
+            border-color: #FFF #FFF transparent transparent;
+        }
         @media (max-width: 1199px), (min-width: 2001px) {
             #container {
                 display: none;
@@ -121,6 +175,8 @@
                 padding: 20px;
             }
         }
+
+
 
 
     </style>
@@ -137,6 +193,8 @@ window.onload = function(){
         window.scrollBy(0, -t);
         window.scrollBy(0, e);
     }
+
+
 
 
 
@@ -164,12 +222,57 @@ window.onload = function(){
         <button id="b5" class="mb" onclick="goTo(3000)">
             <img src="m5.png">
         </button>
-<!--        https://ru.freepik.com/free-icons-->
+        <!--        https://ru.freepik.com/free-icons-->
     </div>
     <div id="start">
         <img src="name.png" style="width: 55%; margin: 0 17%;">
         <div id="mouse">
             <img src="mouse.gif" style="width: 100%;">
+        </div>
+    </div>
+    <div style="position: fixed; z-index: 58; width: 100%; height: 25%; bottom: 0; background: #5f5a54;"></div>
+    <div id="c1" class="elements">
+        <div class="pol"></div>
+        <img src="images/спутник.png" style="width: 20%; bottom: 50%; left: 18%;"  onclick="spav(1)">
+        <img src="images/поехали.png" style="width: 20%; bottom: 30%; right: 40%;"  onclick="spav(2)">
+<!--        <img src="images/песочница.png" style="width: 18%; bottom: 21%; left: 17%;"  onclick="spav(4)">-->
+        <img src="images/кгб.png" style="width: 28%; bottom: 0; left: 0;"  onclick="spav(0)">
+        <img src="images/аквариум.png" style="width: 15%; bottom: 0; left: 28%;"  onclick="spav(3)">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(1)">
+        <div class="aneki">
+            <span>Освоение космоса</span>
+            <p id="anek1">пример 1</p>
+        </div>
+    </div>
+    <div id="c2" class="elements">
+        <div class="pol"></div>
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(2)">
+        <div class="aneki">
+            <span>Олимпиада 1980</span>
+            <p id="anek2">пример 1</p>
+        </div>
+    </div>
+    <div id="c3" class="elements">
+        <div class="pol"></div>
+        <img src="images/токсикоманы.png" style="width: 28%; bottom: 21%; right: 45%;"  onclick="spav(3)">
+        <img src="images/самогон.png" style="width: 20%; bottom: 35%; right: 20%;"  onclick="spav(2)">
+        <img src="images/очередь.png" style="width: 24%; bottom: -6%; left: 0;"  onclick="spav(0)">
+        <img src="images/политалкаш.png" style="width: 10%; bottom: 4%; left: 24%;"  onclick="spav(1)">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(3)">
+        <div class="aneki">
+            <span>Сухой закон</span>
+            <p id="anek3">Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже:
+                "Мне бутылку "Столичной" ". - "А вам не продам!" - "Почему?" - Приходите в четырнадцать,
+                согласно вашему указу..."</p>
+        </div>
+    </div>
+
+    <div id="c4" class="elements">
+        <div class="pol"></div>
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(4)">
+        <div class="aneki">
+            <span>Авария на ЧАЭС</span>
+            <p id="anek4">пример 1</p>
         </div>
     </div>
     <div id="i1" class="epoha"></div>
@@ -186,7 +289,16 @@ window.onload = function(){
 </div>
 
 <script>
-
+var n_anek = 0;
+var aneki3 = ['Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже: "Мне бутылку "Столичной" ". - "А вам не продам!" - "Почему?" - Приходите в четырнадцать, согласно вашему указу..."',
+              'В парфюмерном магазине, Входят двое и говорят: «Пожалуйста, два “Тройных” и один “Ландыш”». — «Брали б уже три “Тройных”», — говорит продавщица. «Что вы, с нами дама!»',
+              'Пассажир вышел из троллейбуса у винно-водочного магазина: «Кто последний?» — «Рано вышли — последний на следующей остановке».',
+              'Председатель сельсовета раздевает секретаршу. «Иван Петрович, хоть дверь закройте!» — «Нельзя, а то еще подумают, что мы здесь водку пьем».',
+              'Две новые медали: за мужество — для тех, кто не пьет, и медаль за храбрость — для тех, кто пьет.',
+              'А/р «Почему загорелись леса и торфяники Подмосковья в 1972 году?» — «Потому что Брежнев сказал: "Пусть земля горит под ногами у алкоголиков!"».'];
+var aneki2 = ['пример 1', 'пример 2'];
+var aneki1 = ['пример 1', 'пример 2'];
+var aneki4 = ['пример 1', 'пример 2'];
 function myMove(t) {
     var start =  document.getElementById("start");
     var elem1 =  document.getElementById("i1");
@@ -196,6 +308,12 @@ function myMove(t) {
     var s1 = document.getElementById("s1");
     var s2 = document.getElementById("s2");
     var s3 = document.getElementById("s3");
+    var s4 = document.getElementById("s4");
+
+    var c1 = document.getElementById("c1");
+    var c2 = document.getElementById("c2");
+    var c3 = document.getElementById("c3");
+    var c4 = document.getElementById("c4");
     var pos = t;
     var z = Math.pow(1.005, t);
     if (t < 600) {
@@ -217,6 +335,11 @@ function myMove(t) {
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
         s4.style.opacity = 0.3;
+        n_anek = 0;
+        c1.style.left = "-100%";
+        c2.style.left = "-100%";
+        c3.style.left = "-100%";
+        c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else if (t < 1200) {
@@ -238,6 +361,11 @@ function myMove(t) {
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
         s4.style.opacity = 0.3;
+        n_anek = 0;
+        c1.style.left = 0;
+        c2.style.left = "-100%";
+        c3.style.left = "-100%";
+        c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
     }
     else if (t < 1800) {
@@ -259,6 +387,11 @@ function myMove(t) {
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
         s4.style.opacity = 0.3;
+        n_anek = 0;
+        c1.style.left = "100%";
+        c2.style.left = "0%";
+        c3.style.left = "-100%";
+        c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
     }
     else if (t < 2400) {
@@ -280,6 +413,11 @@ function myMove(t) {
         s2.style.opacity = 0;
         s3.style.opacity = 0.3;
         s4.style.opacity = 0.3;
+        n_anek = 0;
+        c1.style.left = "100%";
+        c2.style.left = "100%";
+        c3.style.left = "0%";
+        c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
     }
     else if (t < 3000) {
@@ -301,6 +439,11 @@ function myMove(t) {
         s2.style.opacity = 0;
         s3.style.opacity = 0;
         s4.style.opacity = 0.3;
+        n_anek = 0;
+        c1.style.left = "100%";
+        c2.style.left = "100%";
+        c3.style.left = "100%";
+        c4.style.left = "0%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
     }
     else {
@@ -322,6 +465,11 @@ function myMove(t) {
         s2.style.opacity = 0;
         s3.style.opacity = 0;
         s4.style.opacity = 0;
+        n_anek = 0;
+        c1.style.left = "100%";
+        c2.style.left = "100%";
+        c3.style.left = "100%";
+        c4.style.left = "100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
     }
 
@@ -329,10 +477,38 @@ function myMove(t) {
 window.addEventListener('scroll', function() {
     myMove(pageYOffset);
 });
+function anek(k) {
+    let text = "Анекдота пока нет...";
+    if (k == 1) {
+        n_anek += 1;
+        n_anek %= aneki1.length;
+        text = aneki1[n_anek];
+        document.getElementById("anek1").innerText = text;
+        console.log(1);
+    }
+    if (k == 2) {
+        n_anek += 1;
+        n_anek %= aneki2.length;
+        text = aneki2[n_anek];
+        document.getElementById("anek2").innerText = text;
+        console.log(12);
+    }
+    else if (k == 3) {
+        n_anek += 1;
+        n_anek %= aneki3.length;
+        text = aneki3[n_anek];
+        document.getElementById("anek3").innerText = text;
+        console.log(123);
+    }
+    else if (k == 4) {
+        n_anek += 1;
+        n_anek %= aneki4.length;
+        text = aneki4[n_anek];
+        document.getElementById("anek4").innerText = text;
+        console.log(1234);
+    }
 
-
-
-
+}
 </script>
 </body>
 </html>
