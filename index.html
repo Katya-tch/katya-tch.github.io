@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <title>История в анекдотах</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arsenal&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya+SC&family=Arsenal&display=swap');
         body {
             padding: 0;
             margin: 0;
-            transition-timing-function: linear
+            transition-timing-function: linear;
+            background: #fff;
+            font-family: 'Alegreya SC', serif;
+            font-family: 'Arsenal', sans-serif;
         }
         #altern {
             display: none;
         }
         #container {
             width: 100%;
-            height: calc(3000px + 100vh);
+            height: calc(3300px + 100vh);
             position: relative;
         }
         .epoha {
@@ -132,38 +137,38 @@
         }
         .aneki {
             color: #5f5a54;
-            font-family: "Times New Roman";
-            font-size: 17pt;
-            background: white;
+            font-size: 120%;
+            background-image: url('anekdot.png');
+            box-shadow: 0 0 2px 2px white;
             position: absolute;
             width: 19%;
-            bottom: 6%;
+            top: 38%;
             right: 1%;
-            height: 56%;
-            padding: 20px;
+            padding: 1%;
             box-sizing: border-box;
-            text-align: left;
-            border-radius: 20px;
+            text-align: justify;
+            border-radius: 0px;
+            overflow: auto;
         }
         .aneki span {
             display: block;
             text-align: center;
-            font-size: 22pt;
+            font-size: 150%;
             font-weight: bold;
             margin-bottom: 10px;
         }
         .aneki p {
             padding: 5px;
         }
-        .aneki:before {
-            content: ' ';
+        .aneki1 {
             position: absolute;
-            width: 0;
-            height: 0;
-            left: -55px;
-            bottom: 75px;
-            border: 30px solid;
-            border-color: #FFF #FFF transparent transparent;
+            width: 10%;
+            top: 38%;
+            height: 40%;
+            right: 19%;
+            background-image: url('хвост.png');
+            background-size: 100% 100%;
+            opacity: 1;
         }
         @media (max-width: 1199px), (min-width: 2001px) {
             #container {
@@ -219,7 +224,7 @@ window.onload = function(){
         <button id="b4" class="mb" onclick="goTo(2700)">
             <img src="m4.png">
         </button>
-        <button id="b5" class="mb" onclick="goTo(3000)">
+        <button id="b5" class="mb" onclick="goTo(3100)">
             <img src="m5.png">
         </button>
         <!--        https://ru.freepik.com/free-icons-->
@@ -239,6 +244,7 @@ window.onload = function(){
         <img src="images/кгб.png" style="width: 28%; bottom: 0; left: 0;"  onclick="spav(0)">
         <img src="images/аквариум.png" style="width: 15%; bottom: 0; left: 28%;"  onclick="spav(3)">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(1)">
+        <div class="aneki1"></div>
         <div class="aneki">
             <span>Освоение космоса</span>
             <p id="anek1">пример 1</p>
@@ -247,6 +253,7 @@ window.onload = function(){
     <div id="c2" class="elements">
         <div class="pol"></div>
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(2)">
+        <div class="aneki1"></div>
         <div class="aneki">
             <span>Олимпиада 1980</span>
             <p id="anek2">пример 1</p>
@@ -256,9 +263,11 @@ window.onload = function(){
         <div class="pol"></div>
         <img src="images/токсикоманы.png" style="width: 28%; bottom: 21%; right: 45%;"  onclick="spav(3)">
         <img src="images/самогон.png" style="width: 20%; bottom: 35%; right: 20%;"  onclick="spav(2)">
-        <img src="images/очередь.png" style="width: 24%; bottom: -6%; left: 0;"  onclick="spav(0)">
+        <img src="images/очередь.png" style="width: 26%; bottom: -10%; left: 0;"  onclick="spav(0)">
         <img src="images/политалкаш.png" style="width: 10%; bottom: 4%; left: 24%;"  onclick="spav(1)">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(3)">
+
+        <div class="aneki1"></div>
         <div class="aneki">
             <span>Сухой закон</span>
             <p id="anek3">Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже:
@@ -270,6 +279,7 @@ window.onload = function(){
     <div id="c4" class="elements">
         <div class="pol"></div>
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(4)">
+        <div class="aneki1"></div>
         <div class="aneki">
             <span>Авария на ЧАЭС</span>
             <p id="anek4">пример 1</p>
@@ -295,7 +305,9 @@ var aneki3 = ['Пришел Горбачев в гастроном, встал �
               'Пассажир вышел из троллейбуса у винно-водочного магазина: «Кто последний?» — «Рано вышли — последний на следующей остановке».',
               'Председатель сельсовета раздевает секретаршу. «Иван Петрович, хоть дверь закройте!» — «Нельзя, а то еще подумают, что мы здесь водку пьем».',
               'Две новые медали: за мужество — для тех, кто не пьет, и медаль за храбрость — для тех, кто пьет.',
-              'А/р «Почему загорелись леса и торфяники Подмосковья в 1972 году?» — «Потому что Брежнев сказал: "Пусть земля горит под ногами у алкоголиков!"».'];
+              'А/р «Почему загорелись леса и торфяники Подмосковья в 1972 году?» — «Потому что Брежнев сказал: "Пусть земля горит под ногами у алкоголиков!"».',
+              'В очереди: "Вы за кем стоите?" — "Как за кем? За пивом! "',
+              'А/р "Что такое алкоголизм? " — "Переходная стадия от социализма к коммунизму"'];
 var aneki2 = ['пример 1', 'пример 2'];
 var aneki1 = ['пример 1', 'пример 2'];
 var aneki4 = ['пример 1', 'пример 2'];
@@ -509,6 +521,7 @@ function anek(k) {
     }
 
 }
+
 </script>
 </body>
 </html>
