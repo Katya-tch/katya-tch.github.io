@@ -27,7 +27,7 @@
             height: 4000px;
             position: fixed;
             opacity: 1;
-            transition-duration: 1.5s;
+            transition-duration: 1s;
             transition-timing-function: ease-in-out;
             background: url('fon.png') repeat-x;
             background-size: 70vh 120vh;
@@ -96,7 +96,7 @@
             height: 100%;
             position: absolute;
             background: #CCDFEB;
-            transition-duration: 2s;
+            transition-duration: 1s;
         }
         #s1 {
             z-index: 45;
@@ -112,9 +112,15 @@
         }
         #mouse {
             position: absolute;
-            right: 300px;
+            right: 250px;
+            bottom: 290px;
+            width: 220px; height: 220px;
+        }
+        #clc {
+            position: absolute;
+            left: 30px;
             bottom: 250px;
-            width: 200px; height: 200px;
+            width: 350px; height: 350px;
         }
         .elements {
             position: fixed;
@@ -128,10 +134,24 @@
             position: absolute;
             cursor: pointer;
         }
+        .elements img:hover {
+            filter: drop-shadow(0px 3px 0px #fff);
+        }
+        #tf {
+            position: absolute;
+        }
+
         .pol {
             width: 100%;
             height: 25%;
             bottom: 0;
+            position: absolute;
+            background: #5f5a54;
+        }
+        .pol1 {
+            width: 100%;
+            height: 25vh;
+            top: 75vh;
             position: absolute;
             background: #5f5a54;
         }
@@ -142,7 +162,7 @@
             box-shadow: 0 0 2px 2px white;
             position: absolute;
             width: 19%;
-            top: 38%;
+            top: 48%;
             right: 1%;
             padding: 1%;
             box-sizing: border-box;
@@ -155,20 +175,34 @@
             text-align: center;
             font-size: 150%;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 7px;
+            color: #658BAC;
         }
         .aneki p {
             padding: 5px;
+            color: #8A3A33;
         }
         .aneki1 {
             position: absolute;
             width: 10%;
-            top: 38%;
-            height: 40%;
+            top: 48%;
+            height: 35%;
             right: 19%;
             background-image: url('хвост.png');
             background-size: 100% 100%;
-            opacity: 1;
+        }
+        #istoria {
+            top: 13%;
+            width: 35%;
+            height: 25%;
+            position: fixed;
+            z-index: 59;
+            transition-duration: 1s;
+            font-size: 100%;
+            padding: .5% 1% .5% .5%;
+            background-image: url('ist.png');
+            background-size: 100% 100%;
+            box-shadow: 0 0 2px 2px #eaddcb;
         }
         @media (max-width: 1199px), (min-width: 2001px) {
             #container {
@@ -180,10 +214,6 @@
                 padding: 20px;
             }
         }
-
-
-
-
     </style>
 </head>
 <body>
@@ -198,10 +228,6 @@ window.onload = function(){
         window.scrollBy(0, -t);
         window.scrollBy(0, e);
     }
-
-
-
-
 
 </script>
 <div id="altern">
@@ -224,35 +250,51 @@ window.onload = function(){
         <button id="b4" class="mb" onclick="goTo(2700)">
             <img src="m4.png">
         </button>
-        <button id="b5" class="mb" onclick="goTo(3100)">
+        <button id="b5" class="mb" onclick="goTo(3000)">
             <img src="m5.png">
         </button>
         <!--        https://ru.freepik.com/free-icons-->
+    </div>
+    <div id="istoria" class="aneki">
+        <span style="color: #5f5a54">Историческая справка</span>
+        <p id="ist">Наведите на объект для получения информации</p>
     </div>
     <div id="start">
         <img src="name.png" style="width: 55%; margin: 0 17%;">
         <div id="mouse">
             <img src="mouse.gif" style="width: 100%;">
         </div>
+        <div id="clc">
+            <img src="clc.gif" style="width: 100%;">
+        </div>
     </div>
-    <div style="position: fixed; z-index: 58; width: 100%; height: 25%; bottom: 0; background: #5f5a54;"></div>
+    <div id="poll" style="position: fixed; z-index: 58; width: 100%; height: 25%; bottom: 0; background: #5f5a54;
+            transition-duration: 1s;"></div>
     <div id="c1" class="elements">
         <div class="pol"></div>
-        <img src="images/спутник.png" style="width: 20%; bottom: 50%; left: 18%;"  onclick="spav(1)">
-        <img src="images/поехали.png" style="width: 20%; bottom: 30%; right: 40%;"  onclick="spav(2)">
-<!--        <img src="images/песочница.png" style="width: 18%; bottom: 21%; left: 17%;"  onclick="spav(4)">-->
-        <img src="images/кгб.png" style="width: 28%; bottom: 0; left: 0;"  onclick="spav(0)">
-        <img src="images/аквариум.png" style="width: 15%; bottom: 0; left: 28%;"  onclick="spav(3)">
-        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(1)">
+        <img src="images/поехали.png" style="width: 20%; bottom: 30%; right: 40%;"  onmouseover="spav(1)" onmouseout="out()">
+        <img src="images/кгб.png" style="width: 28%; bottom: 0; left: 0;"  onmouseover="spav(2)" onmouseout="out()">
+        <img src="images/аквариум.png" style="width: 15%; bottom: 0; left: 28%;"  onmouseover="spav(3)" onmouseout="out()">
+        <img src="images/спутник.png" style="width: 20%; bottom: 50%; left: 18%;"  onmouseover="spav(4)" onmouseout="out()">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(1)" onmouseover="spav(0)" onmouseout="out()">
         <div class="aneki1"></div>
         <div class="aneki">
             <span>Освоение космоса</span>
-            <p id="anek1">пример 1</p>
+            <p id="anek1">«Как чувствовал себя Гагарин в полете?» - «Как последняя собака».</p>
         </div>
     </div>
     <div id="c2" class="elements">
         <div class="pol"></div>
-        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(2)">
+        <div id="scka" style="height: 49%; position: absolute; top: 28%; left: 45%; width: 20%;
+        background-image: url('images/танки_фон.png'); background-size: contain;
+        background-repeat: no-repeat; transition-duration: 1s; opacity: 0">
+            <img src="images/танки.png" style="height: 38%; bottom: 7%; left: 0%;"  onmouseover="spav(9)" onmouseout="out()">
+        </div>
+<!--        <img src="images/танки_фон.png" style="height: 49%; position: absolute; top: 28%; left: 45%; filter: none;">-->
+        <img src="images/кремль.png" style="width: 10%; bottom: 30%; left: 32%;"  onmouseover="spav(10)" onmouseout="out()">
+        <img src="images/медведь.png" style="width: 15%; bottom: 40%; left: 2%;"  onmouseover="spav(11)" onmouseout="out()">
+        <img src="images/туристы.png" style="width: 25%; bottom: 5%; left: 8%;"  onmouseover="spav(12)" onmouseout="out()">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(2)" onmouseover="spav(0)" onmouseout="out()">
         <div class="aneki1"></div>
         <div class="aneki">
             <span>Олимпиада 1980</span>
@@ -261,11 +303,11 @@ window.onload = function(){
     </div>
     <div id="c3" class="elements">
         <div class="pol"></div>
-        <img src="images/токсикоманы.png" style="width: 28%; bottom: 21%; right: 45%;"  onclick="spav(3)">
-        <img src="images/самогон.png" style="width: 20%; bottom: 35%; right: 20%;"  onclick="spav(2)">
-        <img src="images/очередь.png" style="width: 26%; bottom: -10%; left: 0;"  onclick="spav(0)">
-        <img src="images/политалкаш.png" style="width: 10%; bottom: 4%; left: 24%;"  onclick="spav(1)">
-        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(3)">
+        <img src="images/токсикоманы.png" style="width: 28%; bottom: 21%; right: 45%;"  onmouseover="spav(5)" onmouseout="out()">
+        <img src="images/самогон.png" style="width: 20%; bottom: 35%; right: 20%;"  onmouseover="spav(6)" onmouseout="out()">
+        <img src="images/очередь.png" style="width: 26%; bottom: -10%; left: 0;"  onmouseover="spav(7)" onmouseout="out()">
+        <img src="images/политалкаш.png" style="width: 10%; bottom: 4%; left: 24%;"  onmouseover="spav(8)" onmouseout="out()">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(3)" onmouseover="spav(0)" onmouseout="out()">
 
         <div class="aneki1"></div>
         <div class="aneki">
@@ -278,28 +320,56 @@ window.onload = function(){
 
     <div id="c4" class="elements">
         <div class="pol"></div>
-        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(4)">
+        <img src="images/дождь.png" style="width: 40%; bottom: 50%; дуае: 2%;"  onmouseover="spav(13)" onmouseout="out()">
+        <img src="images/продукты.png" style="width: 20%; bottom: 22%; left: 35%;"  onmouseover="spav(14)" onmouseout="out()">
+        <img src="images/тушилки.png" style="width: 18%; bottom: 4%; left: 0;"  onmouseover="spav(15)" onmouseout="out()">
+        <img src="images/внучка.png" style="width: 15%; bottom: 1%; left: 20%;"  onmouseover="spav(16)" onmouseout="out()">
+        <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(4)" onmouseout="out()" onmouseover="spav(0)" >
         <div class="aneki1"></div>
         <div class="aneki">
             <span>Авария на ЧАЭС</span>
             <p id="anek4">пример 1</p>
         </div>
     </div>
-    <div id="i1" class="epoha"></div>
+    <div id="i1" class="epoha"><div class="pol1"></div></div>
     <div id="s1" class="space"></div>
-    <div id="i2" class="epoha"></div>
+    <div id="i2" class="epoha">
+        <div class="pol1"></div>
+    </div>
     <div id="s2" class="space"></div>
-    <div id="i3" class="epoha"></div>
+    <div id="i3" class="epoha"><div class="pol1"></div></div>
     <div id="s3" class="space"></div>
-    <div id="i4" class="epoha"></div>
+    <div id="i4" class="epoha"><div class="pol1"></div></div>
     <div id="s4" class="space"></div>
     <div id="end">
-        <h1>Финальный экран</h1>
+        <img src="images/текст.png" style="width: 60%; margin: auto 0 auto 0%;">
+<!--        <h1 style="width: 70vw;">Анекдот - устное народное творчество. В них отражается то, как народ переживал те или иные события советской истории. Если копнуть глубже, то за ними можно увидеть нечто большее, чем просто шутку.</h1>-->
     </div>
 </div>
 
 <script>
 var n_anek = 0;
+var spravki = [
+                "Нажмите на бабушку чтобы сменился анекдот",
+                "12 апреля 1961 года многие советские граждане, узнав о приземлении Гагарина, выходили на улицы, создавая тем самым стихийные демонстрации. Народ ликовал, для него полет Гагарина был очень важным событием.",
+                "В КГБ входило целых 14 подразделений, которые обеспечивали безопасность и шпионаж по всей территории СССР. Они активно охраняли все сферы деятельности в стране: связь, экономические отношения, социальную ситуацию среди жителей, а также активно занимались охраной самых известных органов управления во всех округа.",
+                "Подавляющее большинство исследований с собаками было проведено в Советском Союзе в 50-х и 60-х годах XX века. Всего в экспериментах участвовали 73 собаки, из которых 58 были отправлено в верхние слои атмосферы, а 15 – на околоземную орбиту.",
+                "4",
+                "Официально продажа спиртного сократилась в 2,5 раза, но на самом деле люди стали пить всё подряд, в том числе одеколоны и лосьоны.",
+                "Объемы самогоноварения в СССР выросли в 6 раз. Это полностью компенсировало сокращение предложения спиртных напитков государством. За самоговарение было привлечено к ответственности в 1985 г. 30 тысяч человек, в 1986 г. — 150 тысяч, в 1987 г. — 397 тысяч.",
+                "Во времена сухого закона вино-водочные магазины работали с 14.00 до 19.00. В итоге очереди в вино-водочные магазины достигали более сотни человек, стоять в очереди приходилось несколько часов в любую погоду.",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18"
+              ];
 var aneki3 = ['Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже: "Мне бутылку "Столичной" ". - "А вам не продам!" - "Почему?" - Приходите в четырнадцать, согласно вашему указу..."',
               'В парфюмерном магазине, Входят двое и говорят: «Пожалуйста, два “Тройных” и один “Ландыш”». — «Брали б уже три “Тройных”», — говорит продавщица. «Что вы, с нами дама!»',
               'Пассажир вышел из троллейбуса у винно-водочного магазина: «Кто последний?» — «Рано вышли — последний на следующей остановке».',
@@ -308,8 +378,16 @@ var aneki3 = ['Пришел Горбачев в гастроном, встал �
               'А/р «Почему загорелись леса и торфяники Подмосковья в 1972 году?» — «Потому что Брежнев сказал: "Пусть земля горит под ногами у алкоголиков!"».',
               'В очереди: "Вы за кем стоите?" — "Как за кем? За пивом! "',
               'А/р "Что такое алкоголизм? " — "Переходная стадия от социализма к коммунизму"'];
+var aneki1 = ["«Как чувствовал себя Гагарин в полете?» - «Как последняя собака».",
+              "«Максимум информации при минимуме затрат - миниюбка, а минимум информации при максимуме затрат - запуски космических станций на Марс",
+              "Автоматическая радиопередача со спутника серии «Космос»: «Спутник находится на заданной орбите и движется в околоземном пространстве с заданной скоростью. Вся аппаратура работает исправно... ботает исправно... отает исправно...»",
+              "Луна: «Надоел. Крутишься тут. Ступай-ка обратно к коммунистам».  Спутник: «Что ты, я насилу от них вырвался».",
+              "Луна: «Как тебя одного выпустили из Советского Союза?». Спутник: «А за мной другой идет, большой, с собакой!»",
+              "Мушка и Пчелка прислали радиограмму: «Умрем, но не вернемся».",
+              "«Почему фигура на монументе в честь запуска спутника выполнена в античном стиле?» - «Потому что мы смогли его запустить, будучи голыми и босыми, как античные рабы».",
+              "«Куда сел Юрий Гагарин, возвратясь из космоса?» «На кучу денег»",
+              "«Как теперь расшифровывется слово КОСМОПОЛИТ?» «Политработник у космонавтов»."];
 var aneki2 = ['пример 1', 'пример 2'];
-var aneki1 = ['пример 1', 'пример 2'];
 var aneki4 = ['пример 1', 'пример 2'];
 function myMove(t) {
     var start =  document.getElementById("start");
@@ -321,6 +399,7 @@ function myMove(t) {
     var s2 = document.getElementById("s2");
     var s3 = document.getElementById("s3");
     var s4 = document.getElementById("s4");
+    var scka = document.getElementById("scka");
 
     var c1 = document.getElementById("c1");
     var c2 = document.getElementById("c2");
@@ -346,13 +425,15 @@ function myMove(t) {
         s1.style.opacity = 0.3;
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
-        s4.style.opacity = 0.3;
+        s4.style.opacity = 1;
+        scka.style.opacity = 0;
         n_anek = 0;
         c1.style.left = "-100%";
         c2.style.left = "-100%";
         c3.style.left = "-100%";
         c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else if (t < 1200) {
         document.getElementById("b1").style.background = '#D48383';
@@ -372,13 +453,16 @@ function myMove(t) {
         s1.style.opacity = 0.3;
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
-        s4.style.opacity = 0.3;
+        s4.style.opacity = 1;
+        scka.style.opacity = 0;
         n_anek = 0;
         c1.style.left = 0;
         c2.style.left = "-100%";
         c3.style.left = "-100%";
         c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        document.getElementById("istoria").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else if (t < 1800) {
         document.getElementById("b2").style.background = '#D48383';
@@ -398,13 +482,16 @@ function myMove(t) {
         s1.style.opacity = 0;
         s2.style.opacity = 0.3;
         s3.style.opacity = 0.3;
-        s4.style.opacity = 0.3;
+        s4.style.opacity = 1;
+        scka.style.opacity = 1;
         n_anek = 0;
         c1.style.left = "100%";
         c2.style.left = "0%";
         c3.style.left = "-100%";
         c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        document.getElementById("istoria").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else if (t < 2400) {
         document.getElementById("b3").style.background = '#D48383';
@@ -424,13 +511,16 @@ function myMove(t) {
         s1.style.opacity = 0;
         s2.style.opacity = 0;
         s3.style.opacity = 0.3;
-        s4.style.opacity = 0.3;
+        s4.style.opacity = 1;
+        scka.style.opacity = 0;
         n_anek = 0;
         c1.style.left = "100%";
         c2.style.left = "100%";
         c3.style.left = "0%";
         c4.style.left = "-100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        document.getElementById("istoria").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else if (t < 3000) {
         document.getElementById("b4").style.background = '#D48383';
@@ -450,13 +540,16 @@ function myMove(t) {
         s1.style.opacity = 0;
         s2.style.opacity = 0;
         s3.style.opacity = 0;
-        s4.style.opacity = 0.3;
+        s4.style.opacity = 1;
+        scka.style.opacity = 0;
         n_anek = 0;
         c1.style.left = "100%";
         c2.style.left = "100%";
         c3.style.left = "100%";
         c4.style.left = "0%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
+        document.getElementById("istoria").style.transform = 'matrix(1, 0, 0, 1, 0, 0)';
     }
     else {
         document.getElementById("b5").style.background = '#D48383';
@@ -477,18 +570,27 @@ function myMove(t) {
         s2.style.opacity = 0;
         s3.style.opacity = 0;
         s4.style.opacity = 0;
+        scka.style.opacity = 0;
         n_anek = 0;
         c1.style.left = "100%";
         c2.style.left = "100%";
         c3.style.left = "100%";
         c4.style.left = "100%";
         start.style.transform = 'matrix(1, 0, 0, 1, 0, -1200)';
+        document.getElementById("poll").style.transform = 'matrix(1, 0, 0, 1, 3000, 0)';
+        document.getElementById("istoria").style.transform = 'matrix(1, 0, 0, 1, 1000, 0)';
     }
 
 }
 window.addEventListener('scroll', function() {
     myMove(pageYOffset);
 });
+function spav(i) {
+    document.getElementById("ist").innerText = spravki[i];
+}
+function out() {
+    document.getElementById("ist").innerText = "Наведите на объект для получения информации";
+}
 function anek(k) {
     let text = "Анекдота пока нет...";
     if (k == 1) {
@@ -521,7 +623,6 @@ function anek(k) {
     }
 
 }
-
 </script>
 </body>
 </html>
