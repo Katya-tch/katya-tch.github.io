@@ -169,6 +169,7 @@
             text-align: justify;
             border-radius: 0px;
             overflow: auto;
+            cursor: pointer;
         }
         .aneki span {
             display: block;
@@ -195,6 +196,7 @@
             right: 19%;
             background-image: url('хвост.png');
             background-size: 100% 100%;
+            cursor: pointer;
         }
         #istoria {
             top: 13%;
@@ -281,8 +283,8 @@ window.onload = function(){
         <img src="images/аквариум.png" style="width: 15%; bottom: 0; left: 28%;"  onmouseover="spav(3)" onmouseout="out()">
         <img src="images/спутник.png" style="width: 20%; bottom: 50%; left: 18%;"  onmouseover="spav(4)" onmouseout="out()">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(1)" onmouseover="spav(0)" onmouseout="out()">
-        <div class="aneki1"></div>
-        <div class="aneki">
+        <div class="aneki1" onclick="anek(1)"></div>
+        <div class="aneki" onclick="anek(1)">
             <span>Освоение космоса</span>
             <p id="anek1">«Как чувствовал себя Гагарин в полете?» - «Как последняя собака».</p>
             <p class="numb" id="numb1">1</p>
@@ -300,8 +302,8 @@ window.onload = function(){
         <img src="images/медведь.png" style="width: 15%; bottom: 40%; left: 2%;"  onmouseover="spav(11)" onmouseout="out()">
         <img src="images/туристы.png" style="width: 25%; bottom: 5%; left: 8%;"  onmouseover="spav(12)" onmouseout="out()">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(2)" onmouseover="spav(0)" onmouseout="out()">
-        <div class="aneki1"></div>
-        <div class="aneki">
+        <div class="aneki1" onclick="anek(2)"></div>
+        <div class="aneki" onclick="anek(2)">
             <span>Олимпиада 1980</span>
             <p id="anek2">Картер говорит, что если Брежнев не выведет войска из Афганистана, он добьется проведения в СССР еще одной Олимпиады.</p>
             <p class="numb" id="numb2">1</p>
@@ -315,8 +317,8 @@ window.onload = function(){
         <img src="images/политалкаш.png" style="width: 10%; bottom: 4%; left: 24%;"  onmouseover="spav(8)" onmouseout="out()">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(3)" onmouseover="spav(0)" onmouseout="out()">
 
-        <div class="aneki1"></div>
-        <div class="aneki">
+        <div class="aneki1" onclick="anek(3)"></div>
+        <div class="aneki" onclick="anek(3)">
             <span>Сухой закон</span>
             <p id="anek3">Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже:
                 "Мне бутылку "Столичной" ". - "А вам не продам!" - "Почему?" - Приходите в четырнадцать,
@@ -332,8 +334,8 @@ window.onload = function(){
         <img src="images/тушилки.png" style="width: 18%; bottom: 4%; left: 0;"  onmouseover="spav(15)" onmouseout="out()">
         <img src="images/внучка.png" style="width: 15%; bottom: 1%; left: 20%;"  onmouseover="spav(16)" onmouseout="out()">
         <img src="images/бабка.png" style="width: 25%; bottom: 2%; right: 22%;" onclick="anek(4)" onmouseout="out()" onmouseover="spav(0)" >
-        <div class="aneki1"></div>
-        <div class="aneki">
+        <div class="aneki1" onclick="anek(4)"></div>
+        <div class="aneki" onclick="anek(4)">
             <span>Авария на ЧАЭС</span>
             <p id="anek4">А/р «Отчего взорвался реактор?» — «Оттого, что цепная реакция пошла путем ускоренного развития».</p>
             <p class="numb" id="numb4">1</p>
