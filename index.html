@@ -72,6 +72,7 @@
             transition-duration: 1s;
         }
         .mb img {
+            outline: 0;
             width: 80%;
             margin: 10%
         }
@@ -81,7 +82,7 @@
             height: 100vh;
             position: fixed;
             background: #CCDFEB;
-            padding: 100px;
+            padding-top: 100px;
         }
         #start {
             z-index: 60;
@@ -167,7 +168,7 @@
             right: 1%;
             padding: 1% 1% .1% 1%;
             box-sizing: border-box;
-            text-align: justify;
+            text-align: left;
             border-radius: 0px;
             overflow: auto;
             cursor: pointer;
@@ -177,12 +178,13 @@
             text-align: center;
             font-size: 150%;
             font-weight: bold;
-            margin-bottom: 7px;
+            margin-bottom: 1px;
             color: #658BAC;
         }
         .aneki p {
             padding: 0px;
-            color: #8A3A33;
+            color: #1f3c55;
+            margin: 3px 5px;
         }
         .numb {
             display: block;
@@ -199,18 +201,31 @@
             background-size: 100% 100%;
             cursor: pointer;
         }
+        #ist {
+            color: #5f5a54;
+        }
         #istoria {
             top: 13%;
-            width: 35%;
+            width: 40%;
             height: 25%;
             position: fixed;
             z-index: 59;
             transition-duration: 1s;
-            font-size: 100%;
+            font-size: 120%;
             padding: .5% 1% .5% .5%;
             background-image: url('ist.png');
             background-size: 100% 100%;
-            box-shadow: 0 0 2px 2px #eaddcb;
+            box-shadow: 0 0 5px 5px rgba(95, 90, 84, .2);
+        }
+        #isto4nik {
+            position: fixed;
+            bottom: 2%;
+            font-size: 120%;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #5f5a54;
         }
         @media (max-width: 1199px), (min-width: 2001px) {
             #container {
@@ -288,7 +303,7 @@ window.onload = function(){
         <div class="aneki" onclick="anek(1)">
             <span>Освоение космоса</span>
             <p id="anek1">«Как чувствовал себя Гагарин в полете?» - «Как последняя собака».</p>
-            <p class="numb" id="numb1">1</p>
+            <p class="numb" id="numb1">1 из 9</p>
         </div>
     </div>
     <div id="c2" class="elements">
@@ -307,7 +322,7 @@ window.onload = function(){
         <div class="aneki" onclick="anek(2)">
             <span>Олимпиада 1980</span>
             <p id="anek2">Картер говорит, что если Брежнев не выведет войска из Афганистана, он добьется проведения в СССР еще одной Олимпиады.</p>
-            <p class="numb" id="numb2">1</p>
+            <p class="numb" id="numb2">1 из 11</p>
         </div>
     </div>
     <div id="c3" class="elements">
@@ -324,7 +339,7 @@ window.onload = function(){
             <p id="anek3">Пришел Горбачев в гастроном, встал в очередь. Видит - всем продают водку. Он тоже:
                 "Мне бутылку "Столичной" ". - "А вам не продам!" - "Почему?" - Приходите в четырнадцать,
                 согласно вашему указу..."</p>
-            <p class="numb" id="numb3">1</p>
+            <p class="numb" id="numb3">1 из 8</p>
         </div>
     </div>
 
@@ -339,7 +354,7 @@ window.onload = function(){
         <div class="aneki" onclick="anek(4)">
             <span>Авария на ЧАЭС</span>
             <p id="anek4">А/р «Отчего взорвался реактор?» — «Оттого, что цепная реакция пошла путем ускоренного развития».</p>
-            <p class="numb" id="numb4">1</p>
+            <p class="numb" id="numb4">1 из 10</p>
         </div>
     </div>
     <div id="i1" class="epoha"></div>
@@ -351,7 +366,8 @@ window.onload = function(){
     <div id="i4" class="epoha"></div>
     <div id="s4" class="space"></div>
     <div id="end">
-        <img src="images/текст.png" style="width: 60%; margin: auto 0 auto 0%;">
+        <img src="images/текст.png" style="width: 60%; margin: auto 0 auto 0%; padding-left: 100px;">
+        <div id="isto4nik">Анекдоты взяты из книги М. Мельниченко «Советский анекдот. Указатель сюжетов»</div>
 <!--        <h1 style="width: 70vw;">Анекдот - устное народное творчество. В них отражается то, как народ переживал те или иные события советской истории. Если копнуть глубже, то за ними можно увидеть нечто большее, чем просто шутку.</h1>-->
     </div>
 </div>
@@ -664,28 +680,28 @@ function anek(k) {
         n1_anek %= aneki1.length;
         text = aneki1[n1_anek];
         document.getElementById("anek1").innerText = text;
-        document.getElementById("numb1").innerText = n1_anek + 1;
+        document.getElementById("numb1").innerText = (n1_anek + 1) + " из " + aneki1.length;
     }
     if (k == 2) {
         n2_anek += 1;
         n2_anek %= aneki2.length;
         text = aneki2[n2_anek];
         document.getElementById("anek2").innerText = text;
-        document.getElementById("numb2").innerText = n2_anek + 1;
+        document.getElementById("numb2").innerText = (n2_anek + 1) + " из " + aneki2.length;
     }
     else if (k == 3) {
         n3_anek += 1;
         n3_anek %= aneki3.length;
         text = aneki3[n3_anek];
         document.getElementById("anek3").innerText = text;
-        document.getElementById("numb3").innerText = n3_anek + 1;
+        document.getElementById("numb3").innerText = (n3_anek + 1) + " из " + aneki3.length;
     }
     else if (k == 4) {
         n4_anek += 1;
         n4_anek %= aneki4.length;
         text = aneki4[n4_anek];
         document.getElementById("anek4").innerText = text;
-        document.getElementById("numb4").innerText = n4_anek + 1;
+        document.getElementById("numb4").innerText = (n4_anek + 1) + " из " + aneki4.length;
     }
 
 }
@@ -694,25 +710,25 @@ function konkr(i, k) {
         n1_anek = i;
         text = aneki1[n1_anek];
         document.getElementById("anek1").innerText = text;
-        document.getElementById("numb1").innerText = n1_anek + 1;
+        document.getElementById("numb1").innerText = (n1_anek + 1) + " из " + aneki1.length;
     }
     if (k == 2) {
         n2_anek = i;
         text = aneki2[n2_anek];
         document.getElementById("anek2").innerText = text;
-        document.getElementById("numb2").innerText = n2_anek + 1;
+        document.getElementById("numb2").innerText = (n2_anek + 1) + " из " + aneki2.length;
     }
     else if (k == 3) {
         n3_anek = i;
         text = aneki3[n3_anek];
         document.getElementById("anek3").innerText = text;
-        document.getElementById("numb3").innerText = n3_anek + 1;
+        document.getElementById("numb3").innerText = (n3_anek + 1) + " из " + aneki3.length;
     }
     else if (k == 4) {
         n4_anek = i;
         text = aneki4[n4_anek];
         document.getElementById("anek4").innerText = text;
-        document.getElementById("numb4").innerText = n4_anek + 1;
+        document.getElementById("numb4").innerText = (n4_anek + 1) + " из " + aneki4.length;
     }
 }
 function anek1(k) {
@@ -722,28 +738,28 @@ function anek1(k) {
         n1_anek %= aneki1.length;
         text = aneki1[n1_anek];
         document.getElementById("anek1").innerText = text;
-        document.getElementById("numb1").innerText = n1_anek + 1;
+        document.getElementById("numb1").innerText = (n1_anek + 1) + " из " + aneki1.length;
     }
     if (k == 2) {
         n2_anek += aneki2.length - 1;
         n2_anek %= aneki2.length;
         text = aneki2[n2_anek];
         document.getElementById("anek2").innerText = text;
-        document.getElementById("numb2").innerText = n2_anek + 1;
+        document.getElementById("numb2").innerText = (n2_anek + 1) + " из " + aneki2.length;
     }
     else if (k == 3) {
         n3_anek += aneki3.length - 1;
         n3_anek %= aneki3.length;
         text = aneki3[n3_anek];
         document.getElementById("anek3").innerText = text;
-        document.getElementById("numb3").innerText = n3_anek + 1;
+        document.getElementById("numb3").innerText = (n3_anek + 1) + " из " + aneki3.length;
     }
     else if (k == 4) {
         n4_anek += aneki4.length - 1;
         n4_anek %= aneki4.length;
         text = aneki4[n4_anek];
         document.getElementById("anek4").innerText = text;
-        document.getElementById("numb4").innerText = n4_anek + 1;
+        document.getElementById("numb4").innerText = (n4_anek + 1) + " из " + aneki4.length;
     }
 
 }
