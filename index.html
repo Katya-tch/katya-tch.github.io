@@ -276,7 +276,6 @@ window.onload = function(){
     function goTo(e) {
         window.scrollTo(0, e);
     }
-
 </script>
 <div id="altern">
     <h2>На вашем устройстве не поддерживается, прощайте...</h2>
@@ -312,7 +311,7 @@ window.onload = function(){
         <div id="mouse">
             <img src="mouse.gif" style="width: 100%;">
         </div>
-        <div id="clc" onclick="window.open('https://inlnk.ru/846Pyv', 'haha', 'left=500,top=50,menubar=no,toolbar=no,location=no');">
+        <div id="clc" onclick="if (new Date().getDay() == 4) window.open('https://inlnk.ru/846Pyv', 'haha', 'left=500,top=50,menubar=no,toolbar=no,location=no');">
             <img src="clc.gif" style="width: 100%;">
         </div>
     </div>
@@ -339,7 +338,6 @@ window.onload = function(){
         background-repeat: no-repeat; transition-duration: 1s; opacity: 0">
             <img src="images/танки.png" style="height: 38%; bottom: 7%; left: 0%;"  onmouseover="spav(9)" onmouseout="out()" onclick="konkr(10, 2)">
         </div>
-<!--        <img src="images/танки_фон.png" style="height: 49%; position: absolute; top: 28%; left: 45%; filter: none;">-->
         <img src="images/кремль.png" style="width: 10%; bottom: 30%; left: 32%;"  onmouseover="spav(10)" onmouseout="out()" onclick="konkr(6, 2)">
         <img src="images/медведь.png" style="width: 15%; bottom: 40%; left: 2%;"  onmouseover="spav(11)" onmouseout="out()" onclick="konkr(5, 2)">
         <img src="images/туристы.png" style="width: 25%; bottom: 5%; left: 8%;"  onmouseover="spav(12)" onmouseout="out()" onclick="konkr(12, 2)">
@@ -412,10 +410,12 @@ window.onload = function(){
         <p id="kto2" align="center"></p>
         <p id="kto3" align="center"></p>
     </div>
+    <div style="position: fixed; left: 20px; bottom: 20px; width: 100px; z-index: 55;">
+        <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Лицензия Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+    </div>
     <div id="end">
         <img src="images/текст.png" style="width: 60%; position: absolute; top: 15%; padding-left: 100px;">
         <div id="isto4nik" style="font-size: 80%">Источник: Мельниченко, М. Советский анекдот (Указатель сюжетов)/Миша Мельниченко - М.: Новое литературное обозрение, 2014. - 1104 с.<br><span>&copy; Мастерская "Советское прошлое", 2022</span></div>
-<!--        <h1 style="width: 70vw;">Анекдот - устное народное творчество. В них отражается то, как народ переживал те или иные события советской истории. Если копнуть глубже, то за ними можно увидеть нечто большее, чем просто шутку.</h1>-->
     </div>
 </div>
 
